@@ -3,7 +3,7 @@
 
 MongooseS is a web application that focuses on bringing the user the latest news.  It utilizes a MongoDB Database, Mongoose and Cheerio to scrape the news articles from other sites on the internet to deliver the latest news and additionally, allows the user to view and comment on the articles.
 
-![Screenshot](public/assets/img/burger2screenshot.png)
+![Screenshot](public/assets/img/)
 
 ## Getting Started
 
@@ -35,14 +35,15 @@ npm install (or npm install -y)
 This should install all the requisite modules, but just in case, you will need:
 
 ```
-express     (npm install -s express)
-handlebars  (npm install -s express-handlebars)
-mysql2      (npm install -s mysql2)
-sequelize   (npm install -s sequelize)
-body-parser (npm install -s body-parser)
+express             (npm install -s express)
+express-handlebars  (npm install -s express-handlebars)
+mongoose            (npm install -s mongoose)
+cheerio             (npm install -s cheerio)
+axios               (npm install -s axios)
+body-parser         (npm install -s body-parser)
 ```
 
-## Running 'MongooseScraper'
+## Running 'MongooseS'
 
 The Sequel is run locally using Node.js, but first you must load the MySQL database, which can be done a number of ways.  The file to create the database is inside the 'db' folder, so it can be opened and run in a MySQL GUI to set up the database, or you can path into the 'db' folder and run it from the MySQL command line (after logging in) using:
  
