@@ -1,7 +1,7 @@
-# MongooseS
+# MongooseSC
 ##### Web application that allows users to view and comment on the latest news.
 
-MongooseS is a web application that focuses on bringing the user the latest news.  It utilizes a MongoDB Database, Mongoose and Cheerio to scrape the news articles from other sites on the internet to deliver the latest news and additionally, allows the user to view and comment on the articles.
+MongooseSC is a web application that focuses on bringing the user the latest news.  It utilizes Cheerio along with a MongoDB Database with Mongoose o scrape the news articles from other sites on the internet to deliver the latest news and additionally, allows the user to view and comment on the articles.
 
 ![Screenshot](public/assets/img/)
 
@@ -43,7 +43,7 @@ axios               (npm install -s axios)
 body-parser         (npm install -s body-parser)
 ```
 
-## Running 'MongooseS'
+## Running 'MongooseSC'
 
 The Sequel is run locally using Node.js, but first you must load the MySQL database, which can be done a number of ways.  The file to create the database is inside the 'db' folder, so it can be opened and run in a MySQL GUI to set up the database, or you can path into the 'db' folder and run it from the MySQL command line (after logging in) using:
  

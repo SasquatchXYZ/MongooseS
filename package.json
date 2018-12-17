@@ -1,0 +1,29 @@
+{
+  "name": "MongooseSC",
+  "version": "1.0.0",
+  "description": "MongooseSC is a web application that focuses on bringing the user the latest news.  It utilizes Cheerio along with a MongoDB Database with Mongoose o scrape the news articles from other sites on the internet to deliver the latest news and additionally, allows the user to view and comment on the articles.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "watch": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SasquatchXYZ/MongooseSC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SasquatchXYZ/MongooseSC/issues"
+  },
+  "homepage": "https://github.com/SasquatchXYZ/MongooseSC#readme",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.4.0",
+    "morgan": "^1.9.1"
+  }
+}
