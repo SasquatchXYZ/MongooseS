@@ -1,4 +1,6 @@
-$.getJSON('/articles', data => {
+/*
+$.getJSON('/articles', function(data) {
+  console.log(data);
   for (let k = 0; k < data.length; k++) {
     $('#articles').append(`<p data-id="${data[k]._id}">${data[k].title}<br/>${data[k].link}</p>`)
   }
@@ -44,4 +46,4 @@ $(document).on('click', '#save-note', function() {
 
   $('#title-input').val();
   $('#body-input').val()
-});
+});*/

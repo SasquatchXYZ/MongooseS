@@ -2,7 +2,7 @@
   "name": "MongooseSC",
   "version": "1.0.0",
   "description": "MongooseSC is a web application that focuses on bringing the user the latest news.  It utilizes Cheerio along with a MongoDB Database with Mongoose o scrape the news articles from other sites on the internet to deliver the latest news and additionally, allows the user to view and comment on the articles.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
