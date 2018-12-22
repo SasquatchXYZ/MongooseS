@@ -1,6 +1,16 @@
 <div id="wrapper">
   <h1>Note Scraper</h1>
   <h2><i>If you can do this... the homework should be no problem.</i></h2>
-  <div id="articles"></div>
+  <button id="scrape-articles">Scrape Articles</button>
+  <button id="show-articles">Show Articles</button>
+  <div id="articles">
+    <ul>
+      {{#each Article}}
+        <li><h6>{{this.title}}</h6>
+          <p>{{this.link}}</p></li>
+      {{/each}}
+    </ul>
+
+  </div>
   <div id="notes"></div>
 </div>

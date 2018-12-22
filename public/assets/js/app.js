@@ -1,3 +1,34 @@
+$(document).on('click', '#scrape-articles', () => {
+  console.log('Begin Scraping...');
+  scrapeArticles();
+});
+
+$(document).on('click', '#show-articles', () => {
+  console.log('Show Articles');
+  showArticles();
+});
+
+const scrapeArticles = () => {
+  return $.ajax({
+    url: '/scrape',
+    type: 'GET'
+  })
+};
+
+const showArticles = () => {
+  return $.ajax({
+    url: '/articles',
+    type: 'GET'
+  })
+    .then(function(results, err) {
+      if (err) {
+        throw err
+      } else {
+        console.log(results)
+      }
+    })
+};
+
 /*
 $.getJSON('/articles', function(data) {
   console.log(data);

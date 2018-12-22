@@ -25,13 +25,13 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 require('./routes/htmlRoutes')(app);
-//require('./routes/apiRoutes')(app);
+require('./routes/apiRoutes')(app);
 
 // Connect to the MongoDB Database
 mongoose.connect('mongodb://localhost/week18test', {useNewUrlParser: true});
 
 // Routes --------------------------------------------------------------------------------------------------------------
-app.get('/scrape', (req, res) => {
+/*app.get('/scrape', (req, res) => {
   axios.get('http://www.echojs.com/').then(response => {
     // console.log(response.data);
     const $ = cheerio.load(response.data);
@@ -49,16 +49,17 @@ app.get('/scrape', (req, res) => {
         .then(dbArticle => console.log(dbArticle))
         .catch(err => res.json(err))
     });
+    console.log('Scrape Complete');
     res.send('Scrape Complete')
   })
-});
+});*/
 
-app.get('/articles', (req, res) => {
+/*app.get('/articles', (req, res) => {
   console.log('loading...');
   db.Article.find({})
     .then(dbArticle => res.json(dbArticle))
     .catch(err => res.json(err))
-});
+});*/
 
 app.get('/articles/:id', (req, res) => {
   db.Article.findOne({_id: req.params.id})
