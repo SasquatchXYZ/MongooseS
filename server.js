@@ -23,7 +23,49 @@ app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
 // Connect to the MongoDB Database
-mongoose.connect('mongodb://localhost/mongooseSC', {useNewURLParser: true});
+mongoose.connect('mongodb://localhost/week18test', {useNewURLParser: true});
+
+// Routes --------------------------------------------------------------------------------------------------------------
+app.get('/scrape', (req, res) => {
+  axios.get('http://www.echojs.com').then(response => {
+    const $ = cheerio.Load(response.data);
+    $('article h2').each(function (i, element) {
+      const result = {};
+
+      result.title = $(this)
+        .children('a')
+        .text();
+      result.link = $(this)
+        .children('a')
+        .attr('href');
+
+      db.Article.create(result)
+        .then(dbArticle => console.log(dbArticle))
+        .catch(err => res.json(err))
+    })
+  })
+});
+
+app.get('/articles', (req, res) => {
+  db.Article.find({})
+    .then(dbArticle => res.json(dbArticle))
+    .catch(err => res.json(err))
+});
+
+app.get('/articles/:id', (req, res) => {
+  db.Article.findOne({_id: req.params.id})
+    .populate('note')
+    .then(dbArticle => res.json(dbArticle))
+    .catch(err => res.json(err))
+});
+
+app.post('/articles/:id', (req, res) => {
+  db.Note.create(req.body)
+    .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true}))
+    .then(dbArticle => res.json(dbArticle))
+    .catch(err => res.json(err))
+});
+
 
 // Start the Server
 app.listen(PORT, () => console.log(`App running at http://localhost:${PORT}`));
