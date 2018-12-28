@@ -1,4 +1,4 @@
-$(document).on('click', '#scrape-articles', () => {
+/*$(document).on('click', '#scrape-articles', () => {
   console.log('Begin Scraping...');
   scrapeArticles();
 });
@@ -27,9 +27,8 @@ const showArticles = () => {
         console.log(results)
       }
     })
-};
+};*/
 
-/*
 $.getJSON('/articles', function(data) {
   console.log(data);
   for (let k = 0; k < data.length; k++) {
@@ -75,6 +74,6 @@ $(document).on('click', '#save-note', function() {
       $('#notes').empty()
     });
 
-  $('#title-input').val();
-  $('#body-input').val()
-});*/
+  $('#title-input').val('');
+  $('#body-input').val('')
+});

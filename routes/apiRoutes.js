@@ -19,7 +19,7 @@ module.exports = app => {
 
         db.Article.create(result)
           .then(dbArticle => {
-            console.log(dbArticle + 'Test');
+            console.log(dbArticle);
           })
           .catch(err => res.json(err))
       });
@@ -31,7 +31,7 @@ module.exports = app => {
   app.get('/articles', (req, res) => {
     console.log('loading...');
     db.Article.find({})
-      .then(dbArticle => console.log(dbArticle))
+      .then(dbArticles => res.render('index',dbArticles))
       .catch(err => res.json(err))
   });
 };
