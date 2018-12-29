@@ -46,10 +46,10 @@ $(document).on('click', 'p', function () {
   })
     .then(data => {
       console.log(data);
-      $('#notes').append(`<h2>${data.title}</h2>`);
-      $('#notes').append("<input id='title-input' name='title'>");
-      $('#notes').append("<textarea id='body-input' name='body'></textarea>");
-      $('#notes').append(`<button data-id='${data._id}' id='save-note'>Save Note</button>`);
+      $('#notes').append(`<h2>${data.title}</h2>`)
+        .append("<input id='title-input' name='title'>")
+        .append("<textarea id='body-input' name='body'></textarea>")
+        .append(`<button data-id='${data._id}' id='save-note'>Save Note</button>`);
 
       if (data.note) {
         $('#title-input').val(data.note.title);

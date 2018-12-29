@@ -21,8 +21,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('public'));
 
 // Establishing Handlebars as the Templating Engine
-/*app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');*/
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 
 /*require('./routes/htmlRoutes')(app);
 require('./routes/apiRoutes')(app);*/
@@ -55,9 +55,10 @@ app.get('/scrape', (req, res) => {
 });
 
 app.get('/articles', (req, res) => {
-  console.log('loading...');
   db.Article.find({})
-    .then(dbArticle => res.json(dbArticle))
+    .then(dbArticle => {
+      console.log(dbArticle);
+      res.render('index', {articles: dbArticle})})
     .catch(err => res.json(err))
 });
 
