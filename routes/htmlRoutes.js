@@ -40,14 +40,14 @@ module.exports = app => {
   app.get('/articles/:id', (req, res) => {
     db.Article.findOne({_id: req.params.id})
       .populate('note')
-      .then(dbArticle => res.json(dbArticle))
+      .then(dbArticle => res.render('note', dbArticle))
       .catch(err => res.json(err))
   });
 
   app.post('/articles/:id', (req, res) => {
     db.Note.create(req.body)
       .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true}))
-      .then(dbArticle => res.json(dbArticle))
+      .then(dbArticle => res.render('note', dbArticle))
       .catch(err => res.json(err))
   })
 

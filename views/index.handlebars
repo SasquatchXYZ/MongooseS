@@ -23,6 +23,7 @@
           <div id="collapse{{ this._id }}" class="collapse" aria-labelledby="{{ this._id }}"
                data-parent="#articleAccordion">
             <div class="card-body">
+              <span class="badge badge-primary badge-pill">{{this.note.length}}</span>
               <!--<h6 class="card-title">Excerpt:</h6>-->
               <h6 class="card-title">{{ this.exerpt }}</h6>
               <p class="card-text text-muted">By: {{ this.author }}</p>
