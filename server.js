@@ -32,18 +32,16 @@ mongoose.connect('mongodb://localhost/week18test', {useNewUrlParser: true});
 
 // Routes --------------------------------------------------------------------------------------------------------------
 app.get('/scrape', (req, res) => {
-  axios.get('http://www.echojs.com/').then(response => {
+  axios.get('https://lifehacker.com/tag/programming').then(response => {
     console.log(response.data);
     const $ = cheerio.load(response.data);
-    $('article h2').each(function (i, element) {
+    $('div.item__text').each(function (i, element) {
       const result = {};
 
-      result.title = $(this)
-        .children('a')
-        .text();
-      result.link = $(this)
-        .children('a')
-        .attr('href');
+      result.title = $(this).find('h1').text();
+      result.link = $(this).find('h1').children().attr('href');
+      result.author = $(this).find('div.author').text();
+      result.exerpt = $(this).find('div.excerpt').text();
 
       db.Article.create(result)
         .then(dbArticle => console.log(dbArticle))
