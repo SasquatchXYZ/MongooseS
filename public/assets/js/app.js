@@ -1,13 +1,21 @@
 $(function() {
+
   $("#scrape-articles").on('click', () => {
     console.log('button clicked');
 
     $.ajax({
       method: 'GET',
+      url: '/api/articles'
+    })
+      .then(data => console.log(data))
+  })
+
+/*    $.ajax({
+      method: 'GET',
       url: '/api/scrape'
     })
       .then(message => console.log(message))
-  })
+  })*/
 
 });
 

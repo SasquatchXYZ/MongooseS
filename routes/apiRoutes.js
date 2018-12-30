@@ -5,7 +5,21 @@ const db = require('../models');
 module.exports = app => {
   // Scraping Articles Route -------------------------------------------------------------------------------------------
   app.get('/api/articles', (req, res) => {
+    const articleArray = [];
 
+    db.Article.find({})
+      .then(dbArticle => {
+        if (dbArticle.length === 0) {
+          res.render('index', {message: 'No Articles to Display...'})
+        } else {
+          dbArticle.forEach(article => {
+            console.log(article.title);
+            articleArray.push(article.title);
+          });
+          res.send(articleArray)
+        }
+      })
+      .catch(err => res.json(err))
   });
 
 
@@ -30,7 +44,7 @@ module.exports = app => {
           })
           .catch(err => res.render('index', {message: err}))
       });
-      res.render('index', {message: 'Scrape Completed. New Articles Available to View.'})
+      res.send({message: 'Scrape Completed. New Articles Available to View.'})
     })
   })
 };
