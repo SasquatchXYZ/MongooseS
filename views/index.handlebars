@@ -6,16 +6,21 @@
 </div>
 
 <div class="row">
-<div class="col-lg-8 col-sm-6" id="articles">
-  <ul>
-    {{#each articles}}
-      <li><p data-id="{{this._id}}">{{this.title}}</p>
-        <a href="{{this.link}}">{{this.link}}</a></li>
-    {{/each}}
-  </ul>
-
-</div>
-<div class="col-lg-4 col-sm-6" id="notes"></div>
+  <div class="col-lg-8 col-sm-6" id="articles">
+    <div class="list-group">
+      {{#each articles }}
+        <a href="#" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1" data-id="{{ this._id }}">{{ this.title }}</h5>
+            <small>3 days ago</small>
+          </div>
+          <p class="mb-1"><a href="{{ this.link }}">{{ this.link }}</a></p>
+          <small>Donec id elit non mi porta.</small>
+        </a>
+      {{/each}}
+    </div>
+  </div>
+  <div class="col-lg-4 col-sm-6" id="notes"></div>
 </div>
 
 <div class="row">
