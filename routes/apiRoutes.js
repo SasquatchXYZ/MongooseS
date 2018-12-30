@@ -4,6 +4,11 @@ const db = require('../models');
 
 module.exports = app => {
   // Scraping Articles Route -------------------------------------------------------------------------------------------
+  app.get('/api/articles', (req, res) => {
+
+  });
+
+
   app.get('/api/scrape', (req, res) => {
     console.log('scrape');
     let newArticleCounter = 0;
@@ -25,7 +30,7 @@ module.exports = app => {
           })
           .catch(err => res.render('index', {message: err}))
       });
-      res.send({message: 'Scrape Completed. New Articles Available to View.'})
+      res.render('index', {message: 'Scrape Completed. New Articles Available to View.'})
     })
-  });
+  })
 };
