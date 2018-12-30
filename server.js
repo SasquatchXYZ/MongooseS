@@ -24,14 +24,14 @@ app.use(express.static('public'));
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-/*require('./routes/htmlRoutes')(app);
-require('./routes/apiRoutes')(app);*/
+require('./routes/htmlRoutes')(app);
+require('./routes/apiRoutes')(app);
 
 // Connect to the MongoDB Database
 mongoose.connect('mongodb://localhost/week18test', {useNewUrlParser: true});
 
 // Routes --------------------------------------------------------------------------------------------------------------
-app.get('/scrape', (req, res) => {
+/*app.get('/scrape', (req, res) => {
   axios.get('https://lifehacker.com/tag/programming').then(response => {
     console.log(response.data);
     const $ = cheerio.load(response.data);
@@ -72,8 +72,10 @@ app.post('/articles/:id', (req, res) => {
     .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true}))
     .then(dbArticle => res.json(dbArticle))
     .catch(err => res.json(err))
-});
+});*/
 
 
 // Start the Server
 app.listen(PORT, () => console.log(`App running at http://localhost:${PORT}`));
+
+module.exports = app;

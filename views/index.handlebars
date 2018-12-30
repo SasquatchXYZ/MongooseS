@@ -1,10 +1,10 @@
 <div class="jumbotron">
-  <h1 class="display-1">Note Scraper</h1>
-  <p class="lead"><i>If you can do this... the homework should be no problem.</i></p>
-  <!--  <button id="scrape-articles">Scrape Articles</button>
-    <button id="show-articles">Show Articles</button>-->
+  <h1 class="display-1">MongooseSC</h1>
+  <p class="lead"><i>Technology Articles Scraped for You're Pleasure...</i></p>
+  <a href="/scrape" class="btn btn-info">Scrape Articles</a>
+  <a href="/articles" class="btn btn-success">Show Articles</a>
 </div>
-
+<div class="row text-center">{{message}}</div>
 <div class="row">
   <div class="col-12">
     <div class="accordion" id="articleAccordion">
@@ -12,14 +12,16 @@
         <div class="card text-center">
           <div class="card-header" id="{{ this._id }}">
             <h2 class="mb-0">
-              <button class="btn btn-link collapsed no-underline" type="button" data-toggle="collapse" data-target="#collapse{{ this._id }}"
+              <button class="btn btn-link collapsed no-underline" type="button" data-toggle="collapse"
+                      data-target="#collapse{{ this._id }}"
                       aria-expanded="false" aria-controls="{{ this._id }}">
                 <strong>{{ this.title }}</strong>
               </button>
             </h2>
           </div>
 
-          <div id="collapse{{ this._id }}" class="collapse" aria-labelledby="{{ this._id }}" data-parent="#articleAccordion">
+          <div id="collapse{{ this._id }}" class="collapse" aria-labelledby="{{ this._id }}"
+               data-parent="#articleAccordion">
             <div class="card-body">
               <!--<h6 class="card-title">Excerpt:</h6>-->
               <h6 class="card-title">{{ this.exerpt }}</h6>

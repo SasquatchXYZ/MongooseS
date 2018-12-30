@@ -35,6 +35,11 @@ const showArticles = () => {
     $('#articles').append(`<p data-id="${data[k]._id}">${data[k].title}<br/>${data[k].link}</p>`)
   }
 });*/
+$(document).on('click', '#show-articles', () => {
+  $.ajax({
+    method: 'GET'
+  })
+});
 
 $(document).on('click', 'h5', function () {
   $('#notes').empty();
