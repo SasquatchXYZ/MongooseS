@@ -1,40 +1,26 @@
-/*$(document).on('click', '#scrape-articles', () => {
-  console.log('Begin Scraping...');
-  scrapeArticles();
-});
+$(function() {
+  $("#scrape-articles").on('click', () => {
+    console.log('button clicked');
 
-$(document).on('click', '#show-articles', () => {
-  console.log('Show Articles');
-  showArticles();
-});
-
-const scrapeArticles = () => {
-  return $.ajax({
-    url: '/scrape',
-    type: 'GET'
-  })
-};
-
-const showArticles = () => {
-  return $.ajax({
-    url: '/articles',
-    type: 'GET'
-  })
-    .then(function(results, err) {
-      if (err) {
-        throw err
-      } else {
-        console.log(results)
-      }
+    $.ajax({
+      method: 'GET',
+      url: '/api/scrape'
     })
-};*/
+      .then(message => console.log(message))
+  })
+
+});
+
+/*$(document).on('click', '#scrape-articles', function() {
+  console.log('button clicked')
+});*/
 
 /*$.getJSON('/articles', function(data) {
   console.log(data);
   for (let k = 0; k < data.length; k++) {
     $('#articles').append(`<p data-id="${data[k]._id}">${data[k].title}<br/>${data[k].link}</p>`)
   }
-});*/
+});
 $(document).on('click', '#show-articles', () => {
   $.ajax({
     method: 'GET'
@@ -81,4 +67,4 @@ $(document).on('click', '#save-note', function() {
 
   $('#title-input').val('');
   $('#body-input').val('')
-});
+});*/

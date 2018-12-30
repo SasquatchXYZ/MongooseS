@@ -1,14 +1,14 @@
+const axios = require('axios');
+const cheerio = require('cheerio');
 const db = require('../models');
 
 module.exports = app => {
   // Scraping Articles Route -------------------------------------------------------------------------------------------
-  app.get('/api/articles', (req, res) => {
+  app.get('/api/scrape', (req, res) => {
+    console.log('scrape');
     let newArticleCounter = 0;
-    compareArticles();
-    //let oldArticles = compareArticles();
 
-    //console.log(oldArticles);
-    /*    axios.get('https://lifehacker.com/tag/programming').then(response => {
+    axios.get('https://lifehacker.com/tag/programming').then(response => {
 
       const $ = cheerio.load(response.data);
       $('div.item__text').each(function (i, element) {
@@ -20,10 +20,12 @@ module.exports = app => {
         result.exerpt = $(this).find('div.excerpt').text();
 
         db.Article.create(result)
-          .then(dbArticle => console.log(dbArticle))
+          .then(dbArticle => {
+            console.log(dbArticle);
+          })
           .catch(err => res.render('index', {message: err}))
       });
-      res.render('index', {message: 'Scrape Completed. New Articles Available to View.'})
-    })*/
+      res.send({message: 'Scrape Completed. New Articles Available to View.'})
+    })
   });
 };
