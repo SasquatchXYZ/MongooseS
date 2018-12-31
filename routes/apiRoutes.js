@@ -1,7 +1,6 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const db = require('../models');
-const articleArray = [];
 
 module.exports = app => {
   // Scraping Articles Route -------------------------------------------------------------------------------------------
@@ -29,6 +28,10 @@ module.exports = app => {
     db.Article.find({})
       .then(dbArticle => {
         if (dbArticle.length !== 0) {
+          const articleArray = [];
+          dbArticle.forEach(doodad => articleArray.push(doodad.title));
+
+          console.log(articleArray);
 
           axios.get('https://lifehacker.com/tag/programming').then(response => {
             let newArticleCounter = 0;
@@ -45,12 +48,11 @@ module.exports = app => {
 
               if (!articleArray.includes(result.title)) {
                 newArticleCounter++;
-                articleArray.push(result.title);
                 db.Article.create(result)
                   .then(dbArticle => {
                     console.log(dbArticle);
                   })
-                  .catch(err => res.render('index', {message: err}))
+                  .catch(err => console.log(err))
               }
             });
             res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
@@ -72,9 +74,10 @@ module.exports = app => {
 
               db.Article.create(result)
                 .then(dbArticle => {
+                  newArticleCounter++;
                   console.log(dbArticle);
                 })
-                .catch(err => res.render('index', {message: err}))
+                .catch(err => console.log(err))
             });
             res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
           })
