@@ -1,21 +1,22 @@
 $(function() {
+const articlesArray = [];
 
   $("#scrape-articles").on('click', () => {
     console.log('button clicked');
 
-    $.ajax({
+/*    $.ajax({
       method: 'GET',
       url: '/api/articles'
     })
       .then(data => console.log(data))
-  })
+  })*/
 
-/*    $.ajax({
+    $.ajax({
       method: 'GET',
       url: '/api/scrape'
     })
       .then(message => console.log(message))
-  })*/
+  })
 
 });
 
