@@ -27,11 +27,15 @@ module.exports = app => {
 
     db.Article.find({})
       .then(dbArticle => {
-        if (dbArticle.length !== 0) {
+        // If the number of articles is not 0...
+        // if (dbArticle.length !== 0) {
+
+          // Create Article Array with the Titles
           const articleArray = [];
           dbArticle.forEach(doodad => articleArray.push(doodad.title));
 
           console.log(articleArray);
+          console.log(articleArray.length);
 
           axios.get('https://lifehacker.com/tag/programming').then(response => {
             let newArticleCounter = 0;
@@ -46,19 +50,26 @@ module.exports = app => {
               result.author = $(this).find('div.author').text();
               result.exerpt = $(this).find('div.excerpt').text();
 
+              // If the articles scraped are not in the Array..
               if (!articleArray.includes(result.title)) {
+                // Increment Counter
                 newArticleCounter++;
+                // Save them to the database
                 db.Article.create(result)
                   .then(dbArticle => {
                     console.log(dbArticle);
+                    //res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
+                    //res.send(200, {message: `Scrape Complete, ${newArticleCounter} New Articles Available`})
                   })
                   .catch(err => console.log(err))
+              } else {
+                console.log('No New Articles');
               }
             });
-            res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
           })
 
-        } else {
+          // If the number of articles is 0
+/*        } else {
           axios.get('https://lifehacker.com/tag/programming').then(response => {
             let newArticleCounter = 0;
 
@@ -76,41 +87,14 @@ module.exports = app => {
                 .then(dbArticle => {
                   newArticleCounter++;
                   console.log(dbArticle);
+                  res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
                 })
                 .catch(err => console.log(err))
             });
-            res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
           })
-        }
+        }*/
       })
       .catch(err => res.json(err))
-
-
-    /*axios.get('https://lifehacker.com/tag/programming').then(response => {
-      let newArticleCounter = 0;
-
-      const $ = cheerio.load(response.data);
-      $('div.item__text').each(function (i, element) {
-
-        const result = {};
-
-        result.title = $(this).find('h1').text();
-        result.link = $(this).find('h1').children().attr('href');
-        result.author = $(this).find('div.author').text();
-        result.exerpt = $(this).find('div.excerpt').text();
-
-        if (!articleArray.includes(result.title)) {
-          newArticleCounter++;
-          articleArray.push(result.title);
-          db.Article.create(result)
-            .then(dbArticle => {
-              console.log(dbArticle);
-            })
-            .catch(err => res.render('index', {message: err}))
-        }
-      });
-      res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
-    })*/
   });
 
 
