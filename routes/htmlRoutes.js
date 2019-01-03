@@ -48,7 +48,7 @@ module.exports = app => {
     db.Article.findOne({_id: req.params.id})
       .populate('note')
       .then(dbArticle => {
-        console.log(dbArticle);
+        // console.log(dbArticle);
         res.render('note', dbArticle)})
       .catch(err => res.json(err))
   });

@@ -1,20 +1,35 @@
-$(function() {
-const articlesArray = [];
+$(function () {
+  const articlesArray = [];
 
   $("#scrape-articles").on('click', () => {
 
-/*    $.ajax({
-      method: 'GET',
-      url: '/api/articles'
-    })
-      .then(data => console.log(data))
-  })*/
+    /*    $.ajax({
+          method: 'GET',
+          url: '/api/articles'
+        })
+          .then(data => console.log(data))
+      })*/
 
     $.ajax({
       method: 'GET',
       url: '/api/scrape'
     })
       .then(message => console.log(message))
+  });
+
+  $('#submit-note').on('click', function (event) {
+    event.preventDefault();
+    const thisId = $(this).attr('data-id');
+    console.log(thisId);
+
+    const newNote = {
+      title: $('#note-title').val(),
+      body: $('#note-body').val()
+  };
+
+  console.log(newNote);
+
+
   })
 
 });
