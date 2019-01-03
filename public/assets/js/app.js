@@ -2,7 +2,6 @@ $(function() {
 const articlesArray = [];
 
   $("#scrape-articles").on('click', () => {
-    console.log('button clicked');
 
 /*    $.ajax({
       method: 'GET',

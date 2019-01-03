@@ -32,7 +32,7 @@ module.exports = app => {
 
           // Create Article Array with the Titles
           const articleArray = [];
-          dbArticle.forEach(doodad => articleArray.push(doodad.title));
+          dbArticle.forEach(article => articleArray.push(article.title));
 
           console.log(articleArray);
           console.log(articleArray.length);
@@ -63,7 +63,7 @@ module.exports = app => {
                   })
                   .catch(err => console.log(err))
               } else {
-                console.log('No New Articles');
+                console.log('Article Already Scraped.');
               }
             });
           })
