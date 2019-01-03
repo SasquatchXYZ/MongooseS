@@ -51,14 +51,6 @@ module.exports = app => {
         // console.log(dbArticle);
         res.render('note', dbArticle)})
       .catch(err => res.json(err))
-  });
-
-  // POST New Note and Update Article ----------------------------------------------------------------------------------
-  app.post('/articles/:id', (req, res) => {
-    db.Note.create(req.body)
-      .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true}))
-      .then(dbArticle => res.render('note', dbArticle))
-      .catch(err => res.json(err))
   })
 
 };

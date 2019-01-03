@@ -21,7 +21,6 @@ module.exports = app => {
       .catch(err => res.json(err))
   });*/
 
-
   app.get('/api/scrape', (req, res) => {
     console.log('scrape');
 
@@ -96,6 +95,14 @@ module.exports = app => {
       })
       .catch(err => res.json(err))
   });
+
+  // POST New Note and Update Article ----------------------------------------------------------------------------------
+  app.post('/articles/:id', (req, res) => {
+    db.Note.create(req.body)
+      .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true}))
+      .then(dbArticle => console.log(dbArticle))
+      .catch(err => res.json(err))
+  })
 
 
   /*    axios.get('https://lifehacker.com/tag/programming').then(response => {

@@ -1,6 +1,7 @@
 $(function () {
   const articlesArray = [];
 
+  // Scrape Articles Button --------------------------------------------------------------------------------------------
   $("#scrape-articles").on('click', () => {
 
     /*    $.ajax({
@@ -17,6 +18,7 @@ $(function () {
       .then(message => console.log(message))
   });
 
+  // Submit Note Button ------------------------------------------------------------------------------------------------
   $('#submit-note').on('click', function (event) {
     event.preventDefault();
     const thisId = $(this).attr('data-id');
@@ -29,8 +31,16 @@ $(function () {
 
   console.log(newNote);
 
-
+  $.ajax({
+    method: 'POST',
+    url: `/articles/${thisId}`,
+    data: newNote
   })
+    .then(data => console.log(data))
+  });
+
+  $('#note-title').val('');
+  $('#note-body').val('');
 
 });
 
