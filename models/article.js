@@ -14,14 +14,16 @@ const ArticleSchema = new Schema({
     type: String,
     required: true
   },
-  exerpt: {
+  excerpt: {
     type: String,
     required: true
   },
-  note: {
+  notes: [
+    {
     type: Schema.Types.ObjectId,
     ref: 'Note'
   }
+  ]
 });
 
 const Article = mongoose.model('Article', ArticleSchema);

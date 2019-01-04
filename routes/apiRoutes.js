@@ -1,6 +1,7 @@
 const axios = require('axios');
 const cheerio = require('cheerio');
 const db = require('../models');
+const moment = require('moment');
 
 module.exports = app => {
   // Scraping Articles Route -------------------------------------------------------------------------------------------
@@ -47,7 +48,7 @@ module.exports = app => {
               result.title = $(this).find('h1').text();
               result.link = $(this).find('h1').children().attr('href');
               result.author = $(this).find('div.author').text();
-              result.exerpt = $(this).find('div.excerpt').text();
+              result.excerpt = $(this).find('div.excerpt').text();
 
               // If the articles scraped are not in the Array..
               if (!articleArray.includes(result.title)) {
@@ -98,9 +99,10 @@ module.exports = app => {
 
   // POST New Note and Update Article ----------------------------------------------------------------------------------
   app.post('/articles/:id', (req, res) => {
+
     db.Note.create(req.body)
-      .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {note: dbNote._id}, {new: true}))
-      .then(dbArticle => console.log(dbArticle))
+      .then(dbNote => db.Article.findOneAndUpdate({_id: req.params.id}, {$push: {notes: dbNote._id}}, {new: true}))
+      .then(dbArticle => res.json(dbArticle))
       .catch(err => res.json(err))
   })
 

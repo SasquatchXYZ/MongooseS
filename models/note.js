@@ -3,7 +3,11 @@ const Schema = mongoose.Schema;
 
 const NoteSchema = new Schema({
   title: String,
-  body: String
+  body: String,
+  updated: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 const Note = mongoose.model('Note', NoteSchema);

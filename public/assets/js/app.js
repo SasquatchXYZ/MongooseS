@@ -1,3 +1,5 @@
+
+
 $(function () {
   const articlesArray = [];
 
@@ -26,7 +28,7 @@ $(function () {
 
     const newNote = {
       title: $('#note-title').val(),
-      body: $('#note-body').val()
+      body: $('#note-body').val(),
   };
 
   console.log(newNote);
@@ -36,11 +38,15 @@ $(function () {
     url: `/articles/${thisId}`,
     data: newNote
   })
-    .then(data => console.log(data))
+    .then(data => console.log(data));
+
+    $('#note-title').val('');
+    $('#note-body').val('');
+
+    location.reload();
   });
 
-  $('#note-title').val('');
-  $('#note-body').val('');
+
 
 });
 

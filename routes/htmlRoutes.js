@@ -46,14 +46,19 @@ module.exports = app => {
   // GET One Article and it's accompanying (using populate) Note -------------------------------------------------------
   app.get('/articles/:id', (req, res) => {
     db.Article.findOne({_id: req.params.id})
-      .populate('note')
+      .populate('notes')
       .then(dbArticle => {
-        // console.log(dbArticle);
-        res.render('note', dbArticle)})
+        console.log({article: dbArticle});
+        res.render('article', {article: dbArticle})
+      })
       .catch(err => res.json(err))
   })
 
 };
+
+
+
+
 
 const compareArticles = () => {
   const articlesArray = [];
