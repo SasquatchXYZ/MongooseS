@@ -1,3 +1,4 @@
+
 $(function () {
   const articlesArray = [];
 
@@ -29,12 +30,13 @@ $(function () {
     const newNote = {
       title: $('#note-title').val(),
       body: $('#note-body').val(),
-      articleId: thisId
+      articleId: thisId,
+      updated: moment().format('HH:mm ddd D MMM YY')
     };
 
     console.log(newNote);
 
-    if (newNote.title === '' || newNote.body === '') {
+    /*if (newNote.title === '' || newNote.body === '') {
       alert('Please include all fields for the note.')
     } else {
       $.ajax({
@@ -48,7 +50,7 @@ $(function () {
       $('#note-body').val('');
 
       location.reload()
-    }
+    }*/
   });
 
   // Delete Note Button ------------------------------------------------------------------------------------------------

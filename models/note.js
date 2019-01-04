@@ -10,10 +10,13 @@ const NoteSchema = new Schema({
     type: String,
     required: true
   },
-  articleId: String,
+  articleId: {
+    type: String,
+    required: true
+  },
   updated: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
   }
 });
 
