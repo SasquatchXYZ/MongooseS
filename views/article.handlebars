@@ -32,8 +32,9 @@
   <!--<button type="button" class="btn btn-info" id="scrape-articles">Scrape Articles</button>-->
   <a href="/articles" class="btn btn-success">Back to Articles</a>
 </div>
+
 <div class="row">
-  <div class="col-sm-6">
+  <div class="col-lg-6 col-sm-12">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title">{{ article.title }}</h5>
@@ -44,7 +45,7 @@
       </div>
     </div>
   </div>
-  <div class="col-sm-6">
+  <div class="col-lg-6 col-sm-12">
     <div class="card">
       <div class="card-body">
         <h5 class="card-title text-center">New Note</h5>
@@ -65,12 +66,14 @@
     </div>
   </div>
 </div>
-<div class="row mt-5">
+
+<div class="row justify-content-center mt-5">
   <div class="card-columns">
     {{#each article.notes}}
       <div class="card">
         <h5 class="card-header">{{ this.title }}
-          <button type="button" class="close delete-note" data-id="{{ this._id }}" data-article="{{ this.articleId }}">
+          <button type="button" class="close delete-note" data-id="{{ this._id }}"
+                  data-article="{{ this.articleId }}">
             <span>&times;</span>
           </button>
         </h5>

@@ -34,17 +34,21 @@ $(function () {
 
     console.log(newNote);
 
-    $.ajax({
-      method: 'POST',
-      url: `/articles/${thisId}`,
-      data: newNote
-    })
-      .then(data => console.log(data));
+    if (newNote.title === '' || newNote.body === '') {
+      alert('Please include all fields for the note.')
+    } else {
+      $.ajax({
+        method: 'POST',
+        url: `/articles/${thisId}`,
+        data: newNote
+      })
+        .then(data => console.log(data));
 
-    $('#note-title').val('');
-    $('#note-body').val('');
+      $('#note-title').val('');
+      $('#note-body').val('');
 
-    location.reload();
+      location.reload()
+    }
   });
 
   // Delete Note Button ------------------------------------------------------------------------------------------------
@@ -59,6 +63,8 @@ $(function () {
       url: `/articles/${articleId}/${noteId}`
     })
       .then(data => console.log(data));
+
+    location.reload()
   })
 
 });

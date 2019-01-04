@@ -4,6 +4,7 @@
   <button type="button" class="btn btn-info" id="scrape-articles">Scrape Articles</button>
   <a href="/articles" class="btn btn-success">Show Articles</a>
 </div>
+
 <div class="row text-center">{{ message }}</div>
 <div class="row">
   <div class="col-12">
@@ -28,7 +29,8 @@
               <a href="{{ this.link }}" class="card-link" target="_blank">{{ this.link }}</a>
               <hr>
               <span class="badge badge-info badge-pill">{{ this.notes.length }}</span>
-              <a href="/articles/{{ this._id }}" class="btn btn-sm btn-warning">View Notes: {{ this.notes.length }}</a>
+              <a href="/articles/{{ this._id }}" class="btn btn-sm btn-warning">View
+                Notes: {{ this.notes.length }}</a>
             </div>
           </div>
         </div>
