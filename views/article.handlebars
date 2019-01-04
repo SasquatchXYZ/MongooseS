@@ -70,7 +70,7 @@
     {{#each article.notes}}
       <div class="card">
         <h5 class="card-header">{{ this.title }}
-          <button type="button" class="close" data-id="{{ this._id }}">
+          <button type="button" class="close delete-note" data-id="{{ this._id }}" data-article="{{ this.articleId }}">
             <span>&times;</span>
           </button>
         </h5>

@@ -18,7 +18,7 @@ app.use(logger('dev'));
 // Use Body-Parse for handling form submissions.
 app.use(bodyParser.urlencoded({extended: true}));
 // Use Express.static to serve up the public folder as a static directory.
-app.use(express.static('public'));
+app.use(express.static(__dirname + '/public'));
 
 // Establishing Handlebars as the Templating Engine
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));

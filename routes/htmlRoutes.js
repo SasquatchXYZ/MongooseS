@@ -52,7 +52,7 @@ module.exports = app => {
         res.render('article', {article: dbArticle})
       })
       .catch(err => res.json(err))
-  })
+  });
 
 };
 

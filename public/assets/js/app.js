@@ -1,5 +1,3 @@
-
-
 $(function () {
   const articlesArray = [];
 
@@ -17,7 +15,9 @@ $(function () {
       method: 'GET',
       url: '/api/scrape'
     })
-      .then(message => console.log(message))
+      .then(message => console.log(message));
+
+    location.reload();
   });
 
   // Submit Note Button ------------------------------------------------------------------------------------------------
@@ -29,16 +29,17 @@ $(function () {
     const newNote = {
       title: $('#note-title').val(),
       body: $('#note-body').val(),
-  };
+      articleId: thisId
+    };
 
-  console.log(newNote);
+    console.log(newNote);
 
-  $.ajax({
-    method: 'POST',
-    url: `/articles/${thisId}`,
-    data: newNote
-  })
-    .then(data => console.log(data));
+    $.ajax({
+      method: 'POST',
+      url: `/articles/${thisId}`,
+      data: newNote
+    })
+      .then(data => console.log(data));
 
     $('#note-title').val('');
     $('#note-body').val('');
@@ -46,7 +47,19 @@ $(function () {
     location.reload();
   });
 
+  // Delete Note Button ------------------------------------------------------------------------------------------------
+  $('.delete-note').on('click', function () {
+    const noteId = $(this).attr('data-id');
+    const articleId = $(this).attr('data-article');
+    console.log(articleId);
+    console.log(noteId);
 
+    $.ajax({
+      method: 'DELETE',
+      url: `/articles/${articleId}/${noteId}`
+    })
+      .then(data => console.log(data));
+  })
 
 });
 
