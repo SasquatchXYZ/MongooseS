@@ -31,7 +31,7 @@ $(function () {
       title: $('#note-title').val(),
       body: $('#note-body').val(),
       articleId: thisId,
-      updated: moment().format('HH:mm ddd D MMM YY')
+      //updated: moment().format('HH:mm ddd D MMM YY')
     };
 
     console.log(newNote);
