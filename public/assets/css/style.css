@@ -9,3 +9,21 @@ button.no-underline:hover {
 a.card-link:hover {
   color: #FF1493
 }
+
+@media(max-width: 1080px) {
+  #new-card {
+    margin-top: 32px;
+  }
+}
+
+@media(max-width: 768px) {
+  .display-1 {
+    font-size: 60px;
+  }
+}
+
+@media(max-width: 576px) {
+  .display-1 {
+    font-size: 48px;
+  }
+}
