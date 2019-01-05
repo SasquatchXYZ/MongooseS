@@ -15,8 +15,8 @@ module.exports = app => {
         const articleArray = [];
         dbArticle.forEach(article => articleArray.push(article.title));
 
-        console.log(articleArray);
-        console.log(articleArray.length);
+        // console.log(articleArray);
+        // console.log(articleArray.length);
 
         axios.get('https://lifehacker.com/tag/programming').then(response => {
           let newArticleCounter = 0;
