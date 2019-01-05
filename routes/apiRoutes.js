@@ -91,14 +91,12 @@ module.exports = app => {
 
   // DELETE Note and Update Article ------------------------------------------------------------------------------------
   app.delete('/articles/:id/:noteId', (req, res) => {
-    console.log(req.params.id);
-    console.log(req.params.noteId);
 
     db.Note.findByIdAndDelete(req.params.noteId)
       .then(dbNote => db.Article.findOneAndUpdate({_id: dbNote.articleId}, {$pull: {notes: dbNote._id}}))
       .then(dbArticle => res.json(dbArticle))
       .catch(err => res.json(err))
-  })
+  });
 
   // GET Single Note ---------------------------------------------------------------------------------------------------
   app.get('/notes/:id', (req, res) => {
@@ -107,8 +105,23 @@ module.exports = app => {
     db.Note.findOne({_id: req.params.id})
       .then(dbNote => res.json(dbNote))
       .catch(err => res.json(err))
-  })
+  });
 
+  // UPDATE a Single Note ----------------------------------------------------------------------------------------------
+  app.post('/notes/:id', (req, res) => {
+    console.log(req.params.id);
+    console.log(req.body);
+
+    db.Note.findOneAndUpdate({_id: req.params.id}, {
+      $set: {
+        title: req.body.title,
+        body: req.body.body,
+        updated: Date.now()
+      }
+    })
+      .then(dbNote => res.json(dbNote))
+      .catch(err => res.json(err))
+  })
 
 
   /*    axios.get('https://lifehacker.com/tag/programming').then(response => {

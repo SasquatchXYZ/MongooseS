@@ -22,7 +22,7 @@ $(function () {
       title: $('#note-title').val(),
       body: $('#note-body').val(),
       articleId: thisId,
-      //updated: moment().format('HH:mm ddd D MMM YY')
+      // updated: moment().format('HH:mm ddd D MMM YY')
     };
 
     console.log(newNote);
@@ -48,8 +48,6 @@ $(function () {
   $('.delete-note').on('click', function () {
     const noteId = $(this).attr('data-id');
     const articleId = $(this).attr('data-article');
-    console.log(articleId);
-    console.log(noteId);
 
     $.ajax({
       method: 'DELETE',
@@ -60,11 +58,12 @@ $(function () {
     location.reload()
   });
 
+  // Edit Note Button --------------------------------------------------------------------------------------------------
   $('.edit-note').on('click', function () {
     const noteId = $(this).attr('data-id');
     const articleId = $(this).attr('data-article');
-    console.log(noteId);
-    console.log(articleId);
+    console.log('note', noteId);
+    console.log('article', articleId);
 
     $.ajax({
       method: 'GET',
@@ -82,15 +81,14 @@ $(function () {
         $('.modal').modal('show')
       });
 
-    //$('.modal').modal('show')
-
   });
 
+  // Update Note Button (Modal) ----------------------------------------------------------------------------------------
   $('#update-note').on('click', function () {
     const noteId = $(this).attr('data-id');
     const articleId = $(this).attr('data-article');
-    console.log(noteId);
-    console.log(articleId);
+    console.log('note', noteId);
+    console.log('article', articleId);
 
     const updatedNote = {
       title: $('#update-title').val(),
@@ -100,6 +98,14 @@ $(function () {
 
     console.log(updatedNote);
 
+    $.ajax({
+      method: 'POST',
+      url: `/notes/${noteId}`,
+      data: updatedNote
+    })
+      .then(note => console.log(note));
+
+    location.reload()
   })
 
 });
