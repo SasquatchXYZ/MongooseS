@@ -16,7 +16,6 @@ $(function () {
   $('#submit-note').on('click', function (event) {
     event.preventDefault();
     const thisId = $(this).attr('data-id');
-    console.log(thisId);
 
     const newNote = {
       title: $('#note-title').val(),
@@ -24,8 +23,7 @@ $(function () {
       articleId: thisId,
       // updated: moment().format('HH:mm ddd D MMM YY')
     };
-
-    console.log(newNote);
+    // console.log(newNote);
 
     if (newNote.title === '' || newNote.body === '') {
       alert('Please include all fields for the note.')
@@ -61,16 +59,12 @@ $(function () {
   // Edit Note Button --------------------------------------------------------------------------------------------------
   $('.edit-note').on('click', function () {
     const noteId = $(this).attr('data-id');
-    const articleId = $(this).attr('data-article');
-    console.log('note', noteId);
-    console.log('article', articleId);
 
     $.ajax({
       method: 'GET',
       url: `/notes/${noteId}`
     })
       .then(note => {
-        console.log(note);
         $('.modal-body #update-title').val(note.title);
         $('.modal-body #update-body').val(note.body);
         $('.modal-footer #update-note')
@@ -87,16 +81,13 @@ $(function () {
   $('#update-note').on('click', function () {
     const noteId = $(this).attr('data-id');
     const articleId = $(this).attr('data-article');
-    console.log('note', noteId);
-    console.log('article', articleId);
 
     const updatedNote = {
       title: $('#update-title').val(),
       body: $('#update-body').val(),
       articleId: articleId
     };
-
-    console.log(updatedNote);
+    // console.log(updatedNote);
 
     $.ajax({
       method: 'POST',

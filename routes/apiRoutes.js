@@ -10,10 +10,8 @@ module.exports = app => {
 
     db.Article.find({})
       .then(dbArticle => {
-        // If the number of articles is not 0...
-        // if (dbArticle.length !== 0) {
 
-        // Create Article Array with the Titles
+        // Create Article Array with the Existing Articles in the Database
         const articleArray = [];
         dbArticle.forEach(article => articleArray.push(article.title));
 
@@ -50,32 +48,6 @@ module.exports = app => {
             }
           });
         })
-
-        // If the number of articles is 0
-        /*        } else {
-                  axios.get('https://lifehacker.com/tag/programming').then(response => {
-                    let newArticleCounter = 0;
-
-                    const $ = cheerio.load(response.data);
-                    $('div.item__text').each(function (i, element) {
-
-                      const result = {};
-
-                      result.title = $(this).find('h1').text();
-                      result.link = $(this).find('h1').children().attr('href');
-                      result.author = $(this).find('div.author').text();
-                      result.exerpt = $(this).find('div.excerpt').text();
-
-                      db.Article.create(result)
-                        .then(dbArticle => {
-                          newArticleCounter++;
-                          console.log(dbArticle);
-                          res.send({message: `Scrape Completed. ${newArticleCounter} New Articles Available to View.`})
-                        })
-                        .catch(err => console.log(err))
-                    });
-                  })
-                }*/
       })
       .catch(err => res.json(err))
   });
@@ -100,17 +72,14 @@ module.exports = app => {
 
   // GET Single Note ---------------------------------------------------------------------------------------------------
   app.get('/notes/:id', (req, res) => {
-    console.log(req.params.id);
 
     db.Note.findOne({_id: req.params.id})
       .then(dbNote => res.json(dbNote))
       .catch(err => res.json(err))
   });
 
-  // UPDATE a Single Note ----------------------------------------------------------------------------------------------
+  // POST (UPDATE) a Single Note ---------------------------------------------------------------------------------------
   app.post('/notes/:id', (req, res) => {
-    console.log(req.params.id);
-    console.log(req.body);
 
     db.Note.findOneAndUpdate({_id: req.params.id}, {
       $set: {
