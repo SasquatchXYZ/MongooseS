@@ -28,7 +28,8 @@ require('./routes/htmlRoutes')(app);
 require('./routes/apiRoutes')(app);
 
 // Connect to the MongoDB Database
-mongoose.connect('mongodb://localhost/week18test', {useNewUrlParser: true});
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/week18test';
+mongoose.connect(MONGODB_URI, {useNewUrlParser: true});
 
 // Routes --------------------------------------------------------------------------------------------------------------
 /*app.get('/scrape', (req, res) => {
