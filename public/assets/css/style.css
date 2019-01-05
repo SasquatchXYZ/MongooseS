@@ -1,3 +1,12 @@
+body {
+  background-image: url("../img/what-the-hex-dark.png");
+}
+
+.jumbotron {
+  background-image: url("../img/code.jpg");
+  background-size: cover;
+}
+
 button.no-underline {
   text-decoration: none !important;
 }
