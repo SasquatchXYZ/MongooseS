@@ -10,6 +10,10 @@ a.card-link:hover {
   color: #FF1493
 }
 
+.badge-pill {
+  float: right;
+}
+
 .delete-note:hover {
   color: #FF1493
 }
