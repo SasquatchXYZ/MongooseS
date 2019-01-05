@@ -5,23 +5,6 @@ const moment = require('moment');
 
 module.exports = app => {
   // Scraping Articles Route -------------------------------------------------------------------------------------------
-  /*  app.get('/api/articles', (req, res) => {
-
-      db.Article.find({})
-        .then(dbArticle => {
-          if (dbArticle.length === 0) {
-            res.render('index', {message: 'No Articles to Display...'})
-          } else {
-            dbArticle.forEach(article => {
-              console.log(article.title);
-              articleArray.push(article.title);
-            });
-            res.send(articleArray)
-          }
-        })
-        .catch(err => res.json(err))
-    });*/
-
   app.get('/api/scrape', (req, res) => {
     console.log('scrape');
 

@@ -1,16 +1,7 @@
-
 $(function () {
-  const articlesArray = [];
 
   // Scrape Articles Button --------------------------------------------------------------------------------------------
   $("#scrape-articles").on('click', () => {
-
-    /*    $.ajax({
-          method: 'GET',
-          url: '/api/articles'
-        })
-          .then(data => console.log(data))
-      })*/
 
     $.ajax({
       method: 'GET',
@@ -36,7 +27,7 @@ $(function () {
 
     console.log(newNote);
 
-    /*if (newNote.title === '' || newNote.body === '') {
+    if (newNote.title === '' || newNote.body === '') {
       alert('Please include all fields for the note.')
     } else {
       $.ajax({
@@ -50,7 +41,7 @@ $(function () {
       $('#note-body').val('');
 
       location.reload()
-    }*/
+    }
   });
 
   // Delete Note Button ------------------------------------------------------------------------------------------------
