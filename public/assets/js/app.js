@@ -7,9 +7,11 @@ $(function () {
       method: 'GET',
       url: '/api/scrape'
     })
-      .then(message => console.log(message));
+      .then(message => {
+        console.log(message);
+      });
 
-    location.reload();
+     location.reload();
   });
 
   // Submit Note Button ------------------------------------------------------------------------------------------------
