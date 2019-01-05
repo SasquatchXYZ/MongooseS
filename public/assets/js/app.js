@@ -61,8 +61,20 @@ $(function () {
   });
 
   $('.edit-note').on('click', function() {
+    const noteId = $(this).attr('data-id');
+    const articleId = $(this).attr('data-article');
+    console.log(noteId);
+    console.log(articleId);
+
+    $.ajax({
+      method: 'GET',
+      url: `/notes/${noteId}`
+    })
+      .then(message => console.log(message));
+
     $('.modal').modal('show')
-  })
+
+  });
 
 });
 

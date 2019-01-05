@@ -100,6 +100,15 @@ module.exports = app => {
       .catch(err => res.json(err))
   })
 
+  // GET Single Note ---------------------------------------------------------------------------------------------------
+  app.get('/notes/:id', (req, res) => {
+    console.log(req.params.id);
+
+
+  })
+
+
+
   /*    axios.get('https://lifehacker.com/tag/programming').then(response => {
 
         const $ = cheerio.load(response.data);
