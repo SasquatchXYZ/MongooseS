@@ -27,6 +27,17 @@ a.card-link:hover {
   color: #FF1493
 }
 
+button.edit-note {
+  color: #888888;
+  background: none;
+  border: none;
+}
+
+button.edit-note:hover {
+  background: none;
+  color: #FF7900;
+}
+
 @media (max-width: 1080px) {
   #new-card {
     margin-top: 32px;

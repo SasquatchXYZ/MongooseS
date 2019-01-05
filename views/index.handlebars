@@ -1,8 +1,10 @@
 <div class="jumbotron">
   <h1 class="display-1">MongooseSC</h1>
   <p class="lead text-white"><i>Technology Articles Scraped for You're Pleasure...</i></p>
-  <button type="button" class="btn btn-info" id="scrape-articles">Scrape Articles</button>
-  <a href="/articles" class="btn btn-success">Show Articles</a>
+  <button type="button" class="btn btn-info" id="scrape-articles">
+    <i class="fas fa-sync"></i> Scrape Articles
+  </button>
+  <a href="/articles" class="btn btn-success"><i class="far fa-folder-open"></i> Show Articles</a>
 </div>
 
 <div class="row text-center">{{ message }}</div>
@@ -19,7 +21,7 @@
                 <strong>{{ this.title }}</strong>
               </button>
             </h2>
-            <span class="badge badge-info badge-pill">{{ this.notes.length }} Notes</span>
+            <span class="badge badge-info badge-pill">{{ this.notes.length }} <i class="far fa-sticky-note"></i></span>
           </div>
 
           <div id="collapse{{ this._id }}" class="collapse" aria-labelledby="{{ this._id }}"
@@ -30,8 +32,7 @@
               <a href="{{ this.link }}" class="card-link" target="_blank">{{ this.link }}</a>
               <hr>
               <!--<span class="badge badge-info badge-pill">{{ this.notes.length }}</span>-->
-              <a href="/articles/{{ this._id }}" class="btn btn-sm btn-warning">View
-                Notes: {{ this.notes.length }}</a>
+              <a href="/articles/{{ this._id }}" class="btn btn-sm btn-warning">Notes</a>
             </div>
           </div>
         </div>

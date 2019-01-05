@@ -58,6 +58,10 @@ $(function () {
       .then(data => console.log(data));
 
     location.reload()
+  });
+
+  $('.edit-note').on('click', function() {
+    $('.modal').modal('show')
   })
 
 });
