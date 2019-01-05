@@ -60,7 +60,7 @@ $(function () {
     location.reload()
   });
 
-  $('.edit-note').on('click', function() {
+  $('.edit-note').on('click', function () {
     const noteId = $(this).attr('data-id');
     const articleId = $(this).attr('data-article');
     console.log(noteId);
@@ -70,11 +70,37 @@ $(function () {
       method: 'GET',
       url: `/notes/${noteId}`
     })
-      .then(message => console.log(message));
+      .then(note => {
+        console.log(note);
+        $('.modal-body #update-title').val(note.title);
+        $('.modal-body #update-body').val(note.body);
+        $('.modal-footer #update-note')
+          .attr({
+            'data-id': note._id,
+            'data-article': note.articleId
+          });
+        $('.modal').modal('show')
+      });
 
-    $('.modal').modal('show')
+    //$('.modal').modal('show')
 
   });
+
+  $('#update-note').on('click', function () {
+    const noteId = $(this).attr('data-id');
+    const articleId = $(this).attr('data-article');
+    console.log(noteId);
+    console.log(articleId);
+
+    const updatedNote = {
+      title: $('#update-title').val(),
+      body: $('#update-body').val(),
+      articleId: articleId
+    };
+
+    console.log(updatedNote);
+
+  })
 
 });
 

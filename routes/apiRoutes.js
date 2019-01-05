@@ -104,7 +104,9 @@ module.exports = app => {
   app.get('/notes/:id', (req, res) => {
     console.log(req.params.id);
 
-
+    db.Note.findOne({_id: req.params.id})
+      .then(dbNote => res.json(dbNote))
+      .catch(err => res.json(err))
   })
 
 
