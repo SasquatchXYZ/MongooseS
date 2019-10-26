@@ -20,13 +20,13 @@
   },
   "homepage": "https://github.com/SasquatchXYZ/MongooseSC#readme",
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "cheerio": "^1.0.0-rc.2",
     "express": "^4.16.4",
     "express-handlebars": "^3.0.0",
     "moment": "^2.23.0",
-    "mongoose": "^5.4.0",
+    "mongoose": "^5.7.7",
     "morgan": "^1.9.1"
   }
 }
