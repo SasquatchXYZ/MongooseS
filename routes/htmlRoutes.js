@@ -1,5 +1,4 @@
 const db = require('../models');
-// const moment = require('moment');
 
 module.exports = app => {
 
@@ -24,14 +23,6 @@ module.exports = app => {
     db.Article.findOne({_id: req.params.id})
       .populate('notes')
       .then(dbArticle => {
-
-        /* dbArticle.notes.map(note => {
-           console.log(note.updated);
-           note.formatUpdated = moment(note.updated).format('HH:mm M/D/YY');
-           console.log(note.formatUpdated);
-           return note
-         });*/
-
         console.log({article: dbArticle});
         res.render('article', {article: dbArticle})
       })
